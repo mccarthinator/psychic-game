@@ -13,7 +13,7 @@
     var guessesLeft = 9;
 
   // The array of letter choices
-    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var letterArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
   // The guessed letters
     var guessedLetters = [];
@@ -50,7 +50,8 @@
 //Users guess function
 document.onkeyup = function(event) {
   
-  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+  var userGuess = event.key;
+  var computerGuess = letterArray[Math.floor(Math.random() * letterArray.length)];
 
 
     // Indicates a win, loss, guess count and reset.
@@ -75,9 +76,6 @@ document.onkeyup = function(event) {
         }
 
 //guessedLetters.push(userGuess);
-
-
-
 
 
 };
