@@ -49,8 +49,8 @@
 
 //Users guess function
 document.onkeyup = function(event) {
+  
   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
 
 
     // Indicates a win, loss, guess count and reset.
@@ -73,4 +73,24 @@ document.onkeyup = function(event) {
             alert("Not so hot."); 
             reset();
         }
+
+//guessedLetters.push(userGuess);
+
+
+
+
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
