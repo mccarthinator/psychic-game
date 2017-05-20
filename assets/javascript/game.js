@@ -17,12 +17,12 @@
 
   // The guessed letters
     var guessedLetters = [];
-    var letterToGuess = null;
+
 
 //FUNCTIONS 
 
   //Lets the computer select a random letter from the array
-  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+  var computerGuess = letterArray[Math.floor(Math.random() * letterArray.length)]
   console.log(computerGuess);
 
   //User gets 9 guesses
@@ -32,11 +32,10 @@
   document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
   };
 
-  var updateLetterToGuess = function() {
-    this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
-  };
-  var updateGuessesSoFar = function() {
+
+  var updateGuessesSoFar = function(letterGuess) {
     // Here we display the user's guesses as letters separated by commas. 
+    guessedLetters.push(letterGuess)
     document.querySelector('#lets').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
   };
   // Function will be called when we reset everything
@@ -45,7 +44,7 @@
     guessesLeft = 9;
     guessedLetters = [];
 
-
+}
 
 //Users guess function
 document.onkeyup = function(event) {
@@ -62,23 +61,29 @@ document.onkeyup = function(event) {
                 alert("Well done, young padawan.");
                 reset();
             }
+
         else if(guessesLeft > 0){
           guessesLeft--;
           document.querySelector("#guessLeft").innerHTML = "Guesses Left: " + guessesLeft;
 
+          updateGuessesSoFar(userGuess);
         }
+    }
 
-        else if(guessesLeft === 0){
+      if (guessesLeft === 0){
             losses++;
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
             alert("Not so hot."); 
             reset();
         }
 
-//guessedLetters.push(userGuess);
+
+     
+}
 
 
-};
+
+
 
 
 
